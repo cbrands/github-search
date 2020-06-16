@@ -1,11 +1,20 @@
-import React from "react";
-import "./styles.css";
+import React, { useState } from "react";
+import Form from "./components/Form";
+import CardList from "./components/CardList";
 
-export default function App() {
+const App = () => {
+  const [cards, setCards] = useState([]);
+
+  const addNewCard = cardInfo => {
+    setCards(cards.concat(cardInfo));
+  };
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div>
+      <Form onSubmit={addNewCard} />
+      <CardList cards={cards} />
     </div>
   );
-}
+};
+
+export default App;
